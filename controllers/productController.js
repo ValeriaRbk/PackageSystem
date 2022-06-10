@@ -1,7 +1,6 @@
 const Product = require('../models/Product');
 const { findOneAndUpdate } = require('../models/User');
 const User = require('../models/User');
-const UserController = require('./UserController');
 
 class productController{
     async addNewProduct(req, res){
