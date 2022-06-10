@@ -1,0 +1,59 @@
+
+<h2> Добро пожаловать {{{ firstname }}} {{{ lastname }}} </h2>
+
+<ul class="collection with-header">
+    <li class="collection-header"><h4>Информация об аккаунте</h4></li>
+    <li class="collection-item"> <b>Возможности: </b>  {{{ role }}} </li>
+    <li class="collection-item"><b>Имя: </b>{{{ firstname }}} </li>
+    <li class="collection-item"><b>Фамилия:</b> {{{ lastname }}} </li>
+    <li class="collection-item"><b>Логин:</b> {{{ login }}} </li>
+    <li class="collection-item"><b>Email:</b> {{{ email }}} </li>
+    <li class="collection-item"><b>Дата регистрации:</b> {{{ createdTime }}} </li>
+</ul>
+
+<table>
+    <tr>
+    <td>
+        <a class="waves-effect waves-light btn" href="/logout" >Выйти из аккаунта</a>
+        <a class="waves-effect waves-light btn #ff5252 red accent-2" href="/delete" >Удалить аккаунт</a>
+    </td>
+    </tr>
+    <tr>
+{{#if client}}
+    <td>
+        {{!-- <a class="waves-effect waves-light btn #ff8a65 deep-orange lighten-2" href="/productList">Все</a>
+        <a class="waves-effect waves-light btn #ff8a65 deep-orange lighten-2" href="/productList">Посмотреть Ваши посылки</a>
+        <a class="waves-effect waves-light btn #ff8a65 deep-orange lighten-2" href="/productList">Посмотреть Ваши посылки</a> --}}
+        <h3>Посылки</h3>
+        <a class="waves-effect waves-light btn #ffab00 amber accent-4" href="/allUserProducts">Активные</a>
+        <a class="waves-effect waves-light btn #bdbdbd grey lighten-1" href="/cancelUserProducts"> Отмененные</a>
+        <a class="waves-effect waves-light btn #ff5252 red accent-2" href="/refuseUserProducts"> Отказано</a>
+    </td>
+{{/if}}
+
+{{#if staff}}
+        <td>
+        <a class="waves-effect waves-light btn #448aff blue accent-2" href="/acceptedProductList">Список взятых посылок</a>
+        <a class="waves-effect waves-light btn #4caf50 green" href="/confirmedProductList">Список доступных посылок</a>
+            {{!-- <form action="/productStaffList" method="POST">
+                <input type="hidden" name="btn" value="accept">
+                <button class="btn #448aff blue accent-2" type="submit">Список взятых посылок</button>
+            </form> --}}
+        </td>
+        <td>
+            {{!-- <form action="/productStaffList" method="POST">
+                <input type="hidden" name="btn" value="confirm">
+                <button class="btn #4caf50 green" type="submit">Список доступных посылок</button>
+            </form> --}}
+        </td>
+{{/if}}
+
+
+{{#if admin}}
+    <td>
+        <a class="waves-effect waves-light btn #ec407a pink lighten-1" href="/adminProductList">Посмотреть список посылок</a>
+        <a class="waves-effect waves-light btn #757575 grey darken-1" href="/refusedProductList">Отмененные посылки</a>
+    </td>
+{{/if}}
+</tr>
+</table>

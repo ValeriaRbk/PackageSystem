@@ -1,0 +1,47 @@
+<div class="row">
+
+    <form class="col s12" action="/newProduct" method="POST">
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Название" type="text" class="validate" name="name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Краткое описание" type="text" class="validate" name="description">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input placeholder="Оценка стоимости" type="number" step="0.01" class="validate" name="price">
+            </div>
+
+            <div class="input-field col s6">
+                <input placeholder="Приблизительный вес" id="weight" type="number" step="0.1" class="validate" name="weight">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Дата отправления" id="departureDate" type="date" class="validate" name="departureDate">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Точка отправления" id="departurePoint" type="text" class="validate" name="departurePoint">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Точка доставки" id="deliveryPoint" type="text" class="validate" name="deliveryPoint">
+            </div>
+        </div>
+
+       <button class="btn waves-effect waves-light #ffd600 yellow accent-4" type="submit">Добавить</button>
+
+    </form>
+  </div>

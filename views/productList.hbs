@@ -1,0 +1,38 @@
+{{#if client}}
+<br>
+<input formaction="/renderUserProducts" formmethod="POST" type="submit" name="btn" value="Все" class="waves-effect waves-light btn">
+<input formaction="/renderUserProducts" formmethod="POST" type="submit" name="btn" value="Отмененные" class="waves-effect waves-light btn">
+<input formaction="/renderUserProducts" formmethod="POST" type="submit" name="btn" value="Отказано" class="waves-effect waves-light btn">
+                {{!-- <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="cancel">
+                <button class="btn #ff5252 red accent-2" type="submit">Отменить посылку</button> --}}
+        {{!-- <a class="waves-effect waves-light btn">Все</a>
+        <a class="waves-effect waves-light btn">Отмененные</a>
+        <a class="waves-effect waves-light btn">Отказано</a> --}}
+    </form>
+{{/if}}
+
+<ul class="collection">
+
+{{#if productList}}
+{{#each productList}}
+    <form action="/detailed" method="POST">
+
+    <li class="collection-item avatar">
+        <span class="title"><b> {{ this.name }} </b></span>
+        <p><b>ID:</b> {{ this.id }} <br>
+        <b>Описание:</b> {{ this.description }} <br>
+        <b>Статус посылки:</b> {{ this.status }}</p>
+        
+        <input type="hidden" name="id" value="{{ this.id }}">
+        <button class="" type="submit"><i class="material-icons">подробнее</i></button>
+
+    </li>
+    </form>
+{{/each}}
+    {{else}}
+    <h4 style="text-align:center;"> У Вас нет ни одной посылки </h4>
+{{/if}}
+
+</ul>
+            

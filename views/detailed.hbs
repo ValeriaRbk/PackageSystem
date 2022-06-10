@@ -1,0 +1,131 @@
+
+<ul class="collection with-header">
+<a class="waves-effect waves-light btn-small #4db6ac teal lighten-2" href="/back">Вернуться</a>
+
+{{#each product}}
+<table class="highlight centered">
+    <li class="collection-header"><h4>{{ this.name }}</h4></li>
+    <tbody>
+        <tr>
+            <td><b> ID:</b></td>
+            <td>{{ this.id }}</td>
+        </tr>
+        <tr>
+        <td><b>Описание:</b></td>
+            <td>{{ this.description }}</td>
+        </tr>
+        <tr>
+            <td><b>Статус:</b></td>
+            <td>{{ this.status }}</td>
+        </tr>
+        <tr>
+            <td><b>Оценено на сумму:</b></td>
+            <td>{{ this.price }}</td>
+        </tr>
+        <tr>
+            <td><b>Примерный вес:</b></td>
+            <td>{{ this.weight }}</td>
+        </tr>
+        <tr>
+            <td><b>Дата отправки:</b></td>
+            <td>{{ this.departureDate }}</td>
+        </tr>
+        <tr>
+            <td><b>Предварительная дата доставки:</b></td>
+            <td>{{ this.deliveryDate }}</td>
+        </tr>
+        <tr>
+            <td><b>Точка отправки:</b></td>
+            <td>{{ this.departurePoint }}</td>
+        </tr>
+        <tr>
+            <td><b>Точка доставки:</b></td>
+            <td>{{ this.deliveryPoint }}</td>
+        </tr>
+        <tr>
+            <td><b>Выполнено:</b></td>
+            <td>{{this.completed }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+{{#if this.admin}}
+<table>
+    <tr>
+        <td>
+            <form action="/adminUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="confirm">
+                <button class="btn #388e3c green darken-2" type="submit">Подтвердить</button>
+            </form>
+        </td>
+        <td>
+            <form action="/adminUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="refused">
+                <button class="btn #ff5252 red accent-2" type="submit">Отказать</button>
+            </form>
+        </td>
+    </tr>
+</table>
+{{/if}}
+
+{{#if this.client}}
+<table>
+    <tr>
+        {{#if this.toCancel}}
+        <td>
+            <form action="/clientUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="restore">
+                <button class="btn #00c853 green accent-4" type="submit">Восстановить посылку</button>
+            </form>
+        </td>
+        {{else}}
+        <td>
+            <form action="/clientUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="cancel">
+                <button class="btn #ff5252 red accent-2" type="submit">Отменить посылку</button>
+            </form>
+        </td>
+        {{/if}}
+    </tr>
+</table>
+{{/if}}
+
+{{#if this.staff}}
+<table>
+    <tr>
+        {{#if this.toCancel}}
+        <td>
+            <form action="/staffUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="cancel">
+                <button class="btn #e53935 red darken-1" type="submit">Отменить</button>
+            </form>
+        </td>
+        {{else}}
+        <td>
+            <form action="/staffUpdateProduct" method="POST">
+                <input type="hidden" name="id" value={{ this.id }}>
+                <input type="hidden" name="btn" value="accept">
+                <button class="btn #0288d1 light-blue darken-2" type="submit">Взять посылку</button>
+            </form>
+        </td>
+        {{/if}}
+    </tr>
+</table>
+{{/if}}
+
+{{/each}}
+</ul>
+
+
+
+<script>
+    function getBack(){
+        window.history.back();
+    }
+</script>
