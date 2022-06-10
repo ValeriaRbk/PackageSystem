@@ -56,7 +56,7 @@ const start = async () => {
             useUnifiedTopology: true,
             useNewUrlParser: true
         })
-        app.listen(PORT, ()=>{
+        app.listen(process.env.PORT, ()=>{
             console.log(`Server start on ${PORT}`);
         })
 
