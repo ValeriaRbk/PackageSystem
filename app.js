@@ -19,7 +19,7 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     store: MongoStore.create({
-        mongoUrl: process.env.databaseUri,
+        mongoUrl: databaseUri,
         collectionName: 'sessions'
     }) 
 
