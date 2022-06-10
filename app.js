@@ -7,7 +7,7 @@ const mainRoutes = require('./routes/main');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const hostname = "127.0.0.1";
 const databaseUri = "mongodb+srv://valeria:12345@shippingdatabase.yw9v6p9.mongodb.net/?retryWrites=true&w=majority";
 const sessionSecret = "kursova"
@@ -56,7 +56,7 @@ const start = async () => {
             useUnifiedTopology: true,
             useNewUrlParser: true
         })
-        app.listen(process.env.PORT, ()=>{
+        app.listen(PORT, ()=>{
             console.log(`Server start on ${PORT}`);
         })
 

@@ -42,6 +42,7 @@ class productListController{
     async renderProducts(req, res){
         try{
             let productList;
+            const user = req.session.userId;
 
             if(req.session.userRole == 'Administrator'){
                 productList = await findProducts({ completed: false });
