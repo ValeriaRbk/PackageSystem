@@ -50,7 +50,7 @@ app.engine(
 
 const start = async () => {
     try{
-        await mongoose.connect(process.env.DATABASE_URI, {
+        await mongoose.connect("mongodb+srv://valeria:12345@shippingdatabase.yw9v6p9.mongodb.net/?retryWrites=true&w=majority", {
             useUnifiedTopology: true,
             useNewUrlParser: true
         })
