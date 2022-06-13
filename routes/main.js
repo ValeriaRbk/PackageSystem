@@ -1,8 +1,8 @@
 const { Router } = require('express');
+const router = Router();
 const userController = require('../controllers/userController');
 const productController = require('../controllers/productController');
 const listController = require('../controllers/productListController');
-const router = Router();
 const login = require('../middleware/login');
 const roles = require('../middleware/roles');
 const { session } = require('passport/lib');
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/back', (req, res)=>{
-    res.redirect('.');
+    res.redirect('..');
 })
 
 //loginRequired - middleware, then acc

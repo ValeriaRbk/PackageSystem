@@ -1,4 +1,3 @@
-const roleController = require('../controllers/roleController')
 
 module.exports.adminRequired = (req, res, next) => {
     try{

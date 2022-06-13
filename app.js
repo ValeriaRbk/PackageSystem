@@ -10,7 +10,7 @@ const MongoStore = require('connect-mongo');
 const PORT = process.env.PORT || 3000;
 const hostname = "127.0.0.1";
 const databaseUri = "mongodb+srv://valeria:12345@shippingdatabase.yw9v6p9.mongodb.net/?retryWrites=true&w=majority";
-const sessionSecret = "kursova"
+const sessionSecret = process.env.SESSION_SECRET || "kursova";
 
 
 app.use(session({
