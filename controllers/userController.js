@@ -6,9 +6,6 @@ class userController{
     async registration(req, res){
         try{
             const { login, password, first_name, last_name, role } = req.body;
-
-            console.log(login)
-            console.log(password)
             
             const duplicate = await User.findOne({ login }).where('role').equals(role);
             if( duplicate ){
@@ -52,9 +49,6 @@ class userController{
             req.session.userId = user._id;
             req.session.userRole = user.role;
             req.session.isAuth = true;
-
-            console.log(user.role);
-            console.log(req.session.userRole);
 
             //redirect
             return res.render('successCard', {layout: 'index', title: 'Shipping', message: 'Авторизация прошла успешно'});

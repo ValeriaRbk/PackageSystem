@@ -9,17 +9,15 @@ const MongoStore = require('connect-mongo');
 
 const PORT = process.env.PORT || 3000;
 const hostname = "127.0.0.1";
-const databaseUri = "mongodb+srv://valeria:12345@shippingdatabase.yw9v6p9.mongodb.net/?retryWrites=true&w=majority";
-const sessionSecret = process.env.SESSION_SECRET || "kursova";
 
 
 app.use(session({
-    secret: sessionSecret,
+    secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 60 * 60 * 24 * 1000 },
     saveUninitialized: false,
     resave: false,
     store: MongoStore.create({
-        mongoUrl: databaseUri,
+        mongoUrl: process.env.DATABASE_URI,
         collectionName: 'sessions'
     }) 
 
@@ -52,7 +50,7 @@ app.engine(
 
 const start = async () => {
     try{
-        await mongoose.connect(databaseUri, {
+        await mongoose.connect(process.env.DATABASE_URI, {
             useUnifiedTopology: true,
             useNewUrlParser: true
         })

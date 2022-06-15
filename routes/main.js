@@ -9,7 +9,6 @@ const { session } = require('passport/lib');
 
 
 router.get('/', (req, res) => {
-    console.log(req.sessionID)
     res.render('main', {layout: 'index', title: 'Shipping'});
 });
 
